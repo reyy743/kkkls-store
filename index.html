@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>kkkls store</title>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;700;800&display=swap" rel="stylesheet">
+<style>
+:root{--bg1:#dfe9ff;--bg2:#f1e4ff;--bg3:#dcf7ee;--ink:#1d2340;--soft:#5b6384;--glass:rgba(255,255,255,.45);--edge:rgba(255,255,255,.8);--acc:#5b6cff;--accInk:#fff;--shadow:0 8px 32px rgba(70,80,140,.14);
+box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg1:#161a33;--bg2:#241a3d;--bg3:#12302f;--ink:#eef0ff;--soft:#a3a9cc;--glass:rgba(255,255,255,.08);--edge:rgba(255,255,255,.16);--acc:#8b97ff;--accInk:#10142b;--shadow:0 8px 32px rgba(0,0,0,.35)}}
+:root[data-theme="dark"]{--bg1:#161a33;--bg2:#241a3d;--bg3:#12302f;--ink:#eef0ff;--soft:#a3a9cc;--glass:rgba(255,255,255,.08);--edge:rgba(255,255,255,.16);--acc:#8b97ff;--accInk:#10142b;--shadow:0 8px 32px rgba(0,0,0,.35)}
+*{box-sizing:border-box;margin:0}
+html{scroll-padding-top:env(safe-area-inset-top,0px);scroll-behavior:smooth}
+body{font-family:'Plus Jakarta Sans',system-ui,-apple-system,'Segoe UI',sans-serif;color:var(--ink);background:var(--bg1);min-height:100vh;position:relative;overflow-x:hidden;line-height:1.6}
+.blob{position:fixed;border-radius:50%;filter:blur(70px);opacity:.9;z-index:-1}
+.b1{width:420px;height:420px;background:var(--bg2);top:-80px;left:-100px}
+.b2{width:380px;height:380px;background:var(--bg3);bottom:-100px;right:-80px}
+.b3{width:300px;height:300px;background:#bcd0ff55;top:40%;left:55%}
+.glass{background:var(--glass);border:1px solid var(--edge);backdrop-filter:blur(18px) saturate(140%);-webkit-backdrop-filter:blur(18px) saturate(140%);box-shadow:var(--shadow)}
+.wrap{max-width:1080px;margin:0 auto;padding:0 20px}
+nav{position:sticky;top:env(safe-area-inset-top,0px);z-index:10;margin:14px auto;max-width:1040px;border-radius:999px;padding:10px 12px 10px 22px;display:flex;align-items:center;justify-content:space-between}
+.logo{font-weight:800;letter-spacing:-.02em;font-size:1.1rem}
+.logo span{color:var(--acc)}
+button{font:inherit;color:inherit;cursor:pointer;border:0;background:none}
+button:focus-visible,a:focus-visible{outline:2px solid var(--acc);outline-offset:3px}
+.cartbtn{background:var(--acc);color:var(--accInk);padding:8px 18px;border-radius:999px;font-weight:700;font-size:.9rem}
+.hero{padding:70px 0 50px;display:grid;gap:36px;grid-template-columns:1.1fr .9fr;align-items:center}
+h1{font-size:clamp(2.3rem,6vw,4rem);line-height:1.05;letter-spacing:-.035em;font-weight:800}
+.hero p{color:var(--soft);margin:18px 0 26px;max-width:42ch}
+.cta{display:inline-block;background:var(--acc);color:var(--accInk);padding:13px 28px;border-radius:999px;font-weight:700;text-decoration:none}
+.stack{position:relative;height:280px}
+.stack div{position:absolute;border-radius:28px;display:grid;place-items:center;font-size:3.4rem}
+.s1{width:170px;height:200px;left:6%;top:10px;transform:rotate(-7deg)}
+.s2{width:190px;height:170px;right:4%;top:0;transform:rotate(6deg)}
+.s3{width:210px;height:150px;left:24%;bottom:0}
+.filters{display:flex;gap:10px;flex-wrap:wrap;margin:10px 0 24px}
+.chip{padding:8px 18px;border-radius:999px;font-size:.9rem;font-weight:500;color:var(--soft)}
+.chip[aria-pressed="true"]{background:var(--acc);color:var(--accInk);font-weight:700}
+h2{font-size:1.6rem;letter-spacing:-.02em}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:20px;padding-bottom:60px}
+.card{border-radius:26px;padding:14px;display:flex;flex-direction:column}
+.pic{height:140px;border-radius:18px;display:grid;place-items:center;font-size:3rem;background:linear-gradient(135deg,#ffffff66,#ffffff11)}
+.card h3{font-size:1rem;margin:14px 4px 0}
+.card small{color:var(--soft);margin:0 4px}
+.row{display:flex;justify-content:space-between;align-items:center;margin:12px 4px 4px}
+.price{font-weight:700}
+.add{width:36px;height:36px;border-radius:50%;background:var(--acc);color:var(--accInk);font-size:1.3rem;line-height:1}
+.perks{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:16px;padding-bottom:60px}
+.perks div{border-radius:22px;padding:20px}
+.perks b{display:block}.perks span{color:var(--soft);font-size:.92rem}
+footer{text-align:center;color:var(--soft);font-size:.9rem;padding:20px 0 40px}
+aside{position:fixed;top:0;right:0;height:100%;width:min(360px,100%);z-index:20;transform:translateX(105%);transition:transform .3s;padding:calc(20px + env(safe-area-inset-top,0px)) 20px calc(20px + env(safe-area-inset-bottom,0px));display:flex;flex-direction:column;border-radius:28px 0 0 28px}
+aside.open{transform:none}
+#items{flex:1;overflow:auto;margin:16px 0}
+.it{display:flex;justify-content:space-between;gap:10px;padding:10px 0;border-bottom:1px solid var(--edge);font-size:.95rem}
+.empty{color:var(--soft)}
+.total{display:flex;justify-content:space-between;font-weight:800;margin-bottom:12px}
+.toast{position:fixed;left:50%;bottom:calc(24px + env(safe-area-inset-bottom,0px));transform:translate(-50%,30px);opacity:0;padding:10px 22px;border-radius:999px;transition:.3s;z-index:30;font-size:.9rem}
+.toast.show{opacity:1;transform:translate(-50%,0)}
+@media(max-width:720px){.hero{grid-template-columns:1fr;padding-top:36px}.stack{height:230px}}
+@media(prefers-reduced-motion:reduce){*{transition:none!important;scroll-behavior:auto!important}}
+</style>
+</head>
+<body>
+<div class="blob b1"></div><div class="blob b2"></div><div class="blob b3"></div>
+
+<nav class="glass">
+  <div class="logo">kkkls<span> store</span></div>
+  <button class="cartbtn" id="openCart">Keranjang (<span id="count">0</span>)</button>
+</nav>
+
+<main class="wrap">
+  <section class="hero">
+    <div>
+      <h1>Perlengkapan belajar yang tenang dipandang.</h1>
+      <p>Alat tulis dan aksesori pelajar dengan desain simpel, warna lembut, dan harga ramah kantong.</p>
+      <a class="cta" href="#produk">Lihat produk</a>
+    </div>
+    <div class="stack" aria-hidden="true">
+      <div class="glass s1">📓</div><div class="glass s2">✏️</div><div class="glass s3">🎒</div>
+    </div>
+  </section>
+
+  <section id="produk">
+    <h2>Produk</h2>
+    <div class="filters" id="filters"></div>
+    <div class="grid" id="grid"></div>
+  </section>
+
+  <section class="perks">
+    <div class="glass"><b>Kualitas terjaga</b><span>Setiap barang dicek sebelum dikirim.</span></div>
+    <div class="glass"><b>Harga pelajar</b><span>Terjangkau untuk uang saku bulanan.</span></div>
+    <div class="glass"><b>Kirim cepat</b><span>Pesanan diproses di hari yang sama.</span></div>
+  </section>
+</main>
+
+<footer>© 2026 kkkls store. Belajar jadi lebih rapi.</footer>
+
+<aside class="glass" id="cart" aria-label="Keranjang belanja">
+  <div style="display:flex;justify-content:space-between;align-items:center">
+    <h2>Keranjang</h2><button id="closeCart" aria-label="Tutup keranjang" style="font-size:1.4rem">✕</button>
+  </div>
+  <div id="items"></div>
+  <div class="total"><span>Total</span><span id="total">Rp0</span></div>
+  <button class="cta" id="checkout" style="text-align:center">Checkout</button>
+</aside>
+<div class="toast glass" id="toast" role="status"></div>
+
+<script>
+const products=[
+{n:'Notebook Polos A5',c:'Buku',p:18000,e:'📓',d:'80 lembar, kertas krem'},
+{n:'Buku Tulis Grid',c:'Buku',p:15000,e:'📒',d:'Kotak-kotak, sampul soft'},
+{n:'Pulpen Gel 0.5 (3 pcs)',c:'Alat tulis',p:12000,e:'🖊️',d:'Tinta hitam, cepat kering'},
+{n:'Pensil 2B Pastel',c:'Alat tulis',p:9000,e:'✏️',d:'Isi 6 batang'},
+{n:'Highlighter Pastel Set',c:'Alat tulis',p:22000,e:'🖍️',d:'5 warna lembut'},
+{n:'Kotak Pensil Transparan',c:'Aksesori',p:25000,e:'👝',d:'Ringan dan tahan air'},
+{n:'Tas Ransel Minimal',c:'Aksesori',p:145000,e:'🎒',d:'Muat laptop 14 inci'},
+{n:'Sticky Notes Mini',c:'Aksesori',p:8000,e:'🗒️',d:'Isi 200 lembar'}
+];
+const rp=v=>'Rp'+v.toLocaleString('id-ID');
+const cart={};let cat='Semua';
+const $=id=>document.getElementById(id);
+function chips(){
+  const cs=['Semua',...new Set(products.map(p=>p.c))];
+  $('filters').innerHTML=cs.map(c=>`<button class="chip glass" aria-pressed="${c===cat}" data-c="${c}">${c}</button>`).join('');
+}
+function list(){
+  $('grid').innerHTML=products.map((p,i)=>({p,i})).filter(x=>cat==='Semua'||x.p.c===cat).map(({p,i})=>`
+  <article class="card glass"><div class="pic">${p.e}</div><h3>${p.n}</h3><small>${p.d}</small>
+  <div class="row"><span class="price">${rp(p.p)}</span><button class="add" data-i="${i}" aria-label="Tambah ${p.n} ke keranjang">+</button></div></article>`).join('');
+}
+function render(){
+  const ids=Object.keys(cart);
+  $('count').textContent=ids.reduce((s,i)=>s+cart[i],0);
+  $('items').innerHTML=ids.length?ids.map(i=>`<div class="it"><span>${products[i].n} × ${cart[i]}</span><span>${rp(products[i].p*cart[i])}</span></div>`).join(''):'<p class="empty">Keranjang masih kosong. Tambahkan produk dulu.</p>';
+  $('total').textContent=rp(ids.reduce((s,i)=>s+products[i].p*cart[i],0));
+}
+function toast(t){const e=$('toast');e.textContent=t;e.classList.add('show');clearTimeout(toast.t);toast.t=setTimeout(()=>e.classList.remove('show'),1800)}
+$('filters').onclick=e=>{const b=e.target.closest('[data-c]');if(b){cat=b.dataset.c;chips();list()}};
+$('grid').onclick=e=>{const b=e.target.closest('[data-i]');if(b){cart[b.dataset.i]=(cart[b.dataset.i]||0)+1;render();toast('Ditambahkan ke keranjang')}};
+$('openCart').onclick=()=>$('cart').classList.add('open');
+$('closeCart').onclick=()=>$('cart').classList.remove('open');
+$('checkout').onclick=()=>{if(!Object.keys(cart).length){toast('Keranjang masih kosong');return}toast('Pesanan dicatat. Terima kasih!');for(const k in cart)delete cart[k];render()};
+chips();list();render();
+</script>
+</body>
+</html>
